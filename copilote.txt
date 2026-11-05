@@ -1,0 +1,4 @@
+##table insert##
+insert 100 student records into students table with minimum 400 character length in profile
+##page jonno##
+make pagination for student list that is showing in index.php page . i want to see 20 student recorde per page

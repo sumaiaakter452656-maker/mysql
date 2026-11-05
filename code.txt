@@ -1,0 +1,39 @@
+CREATE PROCEDURE `manufacturer_insert_proce`(IN `m_name` VARCHAR(50) CHARSET utf8mb4, IN `m_address` VARCHAR(100) CHARSET utf8mb4, IN `m_contact` VARCHAR(50) CHARSET utf8mb4) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER INSERT INTO manufacturer (id, name, address, ontact_no) VALUES (NULL, m_name, m_address, m_contact)
+####
+CREATE TRIGGER `Manufr_and_product_del` AFTER DELETE ON `manufacturer` FOR EACH ROW DELETE FROM producet WHERE producet.manufacturer_id = OLD.id
+###
+INSERT INTO `manufacturer`(`id`, `name`, `address`, `contact`) VALUES (NULL,'walton','dhaka','1');
+###
+INSERT INTO `producet`(`id`, `name`, `price`, `manufacturer_id`) VALUES (NULL,'walton 32 inch','32000','1'), (NULL,'walton 40 inch','40000','1');
+###
+INSERT INTO `producet`(`id`, `name`, `price`, `manufacturer_id`) VALUES (NULL, 'SONY 40 INCH','40000','3');
+###
+CREATE VIEW above_50000_producet AS SELECT * FROM `producet` WHERE price >50000;
+###
+SELECT id, name, profile FROM `students` WHERE MATCH(profile) AGAINST ('Rokon');
+###
+CREATE TABLE participants ( id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY, name VARCHAR(35) NOT NULL, email VARCHAR(45) NOT NULL, cash DECIMAL(5,2) NOT NULL ) ENGINE=InnoDB;
+###
+CREATE TABLE trunks (
+id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+owner SMALLINT UNSIGNED NOT NULL REFERENCES participants(id),
+name VARCHAR(25) NOT NULL,
+price DECIMAL(5,2) NOT NULL,
+description MEDIUMTEXT NOT NULL
+) ENGINE=InnoDB;
+###
+INSERT INTO participants SET name="Jason", email="jason@example.com",
+cash="100.00";
+INSERT INTO participants SET name="Jon", email="jon@example.com",
+cash="150.00";
+INSERT INTO trunks SET owner=2, name="Abacus", price="12.99",
+description="Low on computing power? Use an
+abacus!";
+INSERT INTO trunks SET owner=2, name="Magazines", price="6.00",
+description="Stack of computer magazines.";
+INSERT INTO trunks SET owner=1, name="Used Lottery ticket",
+price="1.00",
+description="Great gift for the eternal
+optimist.";
+
+

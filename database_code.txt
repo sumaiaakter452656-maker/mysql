@@ -1,0 +1,10 @@
+
+CREATE VIEW customers_payments_VIEW AS 
+SELECT customers.customerNumber, `customerName`,`phone`,`addressLine1`,`city`,`state`,`country`, paymentdate ,amount FROM customers ,payments WHERE customers.customerNumber= payments.customerNumber
+
+
+INSERT INTO product_logs VALUES (NULL, NEW.productcode,NEW.productname,'INSERT',NOW())
+INSERT INTO product_logs VALUES (NULL, OLD.productcode,OLD.productname,'DELETE',NOW())
+INSERT INTO product_logs VALUES (NULL, OLD.productcode,OLD.productname,'UPDATE',NOW())
+
+
