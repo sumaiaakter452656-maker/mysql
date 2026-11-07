@@ -1,0 +1,81 @@
+SELECT * FROM employees
+
+SELECT `employeeNumber`, `lastName`, `email`, `jobTitle` FROM employees
+
+SELECT * FROM employees WHERE employeeNumber = '1611'
+
+SELECT employeeNumber, lastName, email, jobTitle FROM employees WHERE employeeNumber = '1611'
+
+SELECT employeeNumber, lastName, email, jobTitle FROM employees WHERE jobTitle = 'Sales Rep'
+
+SELECT employeeNumber, lastName, email, jobTitle FROM employees WHERE jobTitle = 'Sales Rep' AND officeCode = '3'
+
+SELECT employeeNumber, lastName, email, jobTitle, officeCode FROM employees WHERE jobTitle = 'Sales Rep' AND officeCode < '4'
+
+SELECT employeeNumber, lastName, email, jobTitle, officeCode FROM employees WHERE jobTitle = 'Sales Rep' AND officeCode in (1,4)
+
+
+
+
+
+
+
+
+SELECT employeeNumber, lastName, firstName, jobTitle, city, country, phone FROM employees, offices WHERE offices.officeCode = employees.officeCode
+
+# Two table Join
+SELECT employeeNumber, lastName, firstName, jobTitle, city, country, phone FROM employees, offices WHERE offices.officeCode = employees.officeCode AND offices.officeCode = 5
+
+INSERT INTO offices 
+(officeCode, city, phone, addressLine1, addressLine2, state, country, postalCode, territory) 
+VALUES 
+('8', 'Dhaka', '800142566333', 'Mirpur Road', 'Metroshopping Mall', '', 'Bangladesh', '1207', 'NA');
+
+
+INSERT INTO employees (
+	employeeNumber, lastName, firstName, extension, email, officeCode, reportsTo, jobTitle
+) VALUES (
+	'1703', 'Uddin', 'Rokon', '103', 'rokon@gmail.com', '8', '1056', 'Web Developer'
+) 
+
+INSERT INTO employees VALUES (
+	'1704', 'Uddin', 'Mahir', '104', 'mahir@gmail.com', '8', '1056', 'Web Developer'
+) 
+
+
+SELECT * FROM `products` WHERE buyPrice BETWEEN 50 AND 100
+
+SELECT DISTINCT productLine FROM `products`;
+
+SELECT * FROM `employees` ORDER BY lastName;
+
+SELECT * FROM `employees` ORDER BY lastName ASC;
+
+SELECT * FROM `employees` ORDER BY lastName DESC;
+
+SELECT CONCAT(firstName, " " , lastName) AS 'Full name' FROM `employees`;
+
+SELECT * FROM `employees` LIMIT 5;
+
+SELECT * FROM `employees` LIMIT 5 OFFSET 10;
+
+
+
+
+
+SELECT customerNumber, customerName, country, quantityOrdered, status FROM customers, orders, orderdetails WHERE
+ 
+orders.customerNumber = customers.customerNumber AND orders.orderNumber = ordersdetails.orderNumber 
+
+SELECT * FROM `orders` WHERE orderDate BETWEEN '2003-01-01' AND '2003-01-31';
+
+SELECT * FROM `customers` WHERE country = 'Australia';
+
+SELECT * FROM `customers` WHERE country = 'Australia' OR country = 'France';
+
+SELECT * FROM `customers` WHERE country NOT IN ('France', 'Australia');
+
+SELECT MIN(amount) FROM `payments`;
+SELECT MAX(amount) FROM `payments`;
+SELECT MAX(amount) AS 'MAX Amount' FROM `payments`;
+SELECT customerNumber, SUM(amount) AS 'Total Amount' FROM `payments` WHERE customerNumber = 103;
