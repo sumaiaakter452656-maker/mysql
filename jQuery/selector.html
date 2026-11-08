@@ -1,0 +1,40 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+ </head>
+ <body>
+    <h1>this is a heading</h1>
+    <h2>this is a subheading</h2>
+    <p>this is a paragraph</p>
+    <ul>
+       <li>belly</li>
+       <li>chameli</li>
+       <li>rose</li>
+       <li>lily</li>
+    </ul>
+    <button class="btn1">hide all</button>
+    <button class="btn2">hide paragraphs</button>
+    <button class="btn3">hide lists</button>
+    <script>
+        $(document).ready(function(){
+           $(".btn1").click(function(){
+           $("*").hide();
+           });
+           $(".btn2").click(function(){
+           $("p").hide();
+           });
+           $(".btn3").click(function(){
+           $("ul").hide();
+           $(".btn3").click(function(){
+            $("ul li:first").hide();
+           })
+
+           });
+        });
+    </script>
+ </body>
+ </html>
